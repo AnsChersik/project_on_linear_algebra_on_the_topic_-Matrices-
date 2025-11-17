@@ -83,23 +83,42 @@ class MainWindow(QWidget):
         self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
         self.buttonNewWind4.clicked.connect(self.OpenWinKramer)
            
-
-
-
-
     def OpenWinMatric(self):
-        pass
+        self.windowMatric = WindowMatrices()
+        self.windowMatric.show()
+        self.close()
 
 
     def OpenWinTransp(self):
-        pass
+        self.winTransp = WindowTransposition()
+        self.winTransp.show()
+        self.close()
 
     def OpenWinOper(self):
-        pass
+        self.winOper = WindowOperations()
+        self.winOper.show()
+        self.close()
 
     def OpenWinKramer(self):
-        pass
+        self.winKramer = WindowKramer()
+        self.winKramer.show()
+        self.close()
 
+class WindowMatrices(QWidget):
+    def __init__(self):
+        super().__init__()
+
+class WindowTransposition(QWidget):
+    def __init__(self):
+        super().__init__()
+
+class WindowOperations(QWidget):
+    def __init__(self):
+        super().__init__()
+
+class WindowKramer(QWidget):
+    def __init__(self):
+        super().__init__()
 
 
 
