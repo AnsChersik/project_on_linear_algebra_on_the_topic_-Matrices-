@@ -104,32 +104,96 @@ class MainWindow(QWidget):
         self.winKramer.show()
         self.close()
 
+
 class WindowMatrices(QWidget):
     def __init__(self):
         super().__init__()
+        self.setStyleSheet('background-color: #464168')
+        self.setGeometry(300, 50, 800, 650)
+        self.setWindowTitle('Матрицы')
+        self.initUI()
+        self.show()
+
+    def initUI(self):
+        self.buttonNewWind4 = QPushButton('Назад', self)
+        self.buttonNewWind4.move(10, 10)
+        self.buttonNewWind4.setFixedSize(80, 40)
+        self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonNewWind4.clicked.connect(self.OpenMainWindow)
+           
+    def OpenMainWindow(self):
+        self.MainWindow = MainWindow()
+        self.MainWindow.show()
+        self.close()
+
+
+
+
+
 
 class WindowTransposition(QWidget):
     def __init__(self):
         super().__init__()
+        self.setStyleSheet('background-color: #464168')
+        self.setGeometry(300, 50, 800, 650)
+        self.setWindowTitle('Матрицы')
+        self.initUI()
+        self.show()
+
+    def initUI(self):
+        self.buttonNewWind4 = QPushButton('Назад', self)
+        self.buttonNewWind4.move(10, 10)
+        self.buttonNewWind4.setFixedSize(80, 40)
+        self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonNewWind4.clicked.connect(self.OpenMainWindow)
+           
+    def OpenMainWindow(self):
+        self.MainWindow = MainWindow()
+        self.MainWindow.show()
+        self.close()
 
 class WindowOperations(QWidget):
     def __init__(self):
         super().__init__()
+        self.setStyleSheet('background-color: #464168')
+        self.setGeometry(300, 50, 800, 650)
+        self.setWindowTitle('Матрицы')
+        self.initUI()
+        self.show()
+
+    def initUI(self):
+        self.buttonNewWind4 = QPushButton('Назад', self)
+        self.buttonNewWind4.move(10, 10)
+        self.buttonNewWind4.setFixedSize(80, 40)
+        self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonNewWind4.clicked.connect(self.OpenMainWindow)
+           
+    def OpenMainWindow(self):
+        self.MainWindow = MainWindow()
+        self.MainWindow.show()
+        self.close()
 
 class WindowKramer(QWidget):
     def __init__(self):
         super().__init__()
+        self.setStyleSheet('background-color: #464168')
+        self.setGeometry(300, 50, 800, 650)
+        self.setWindowTitle('Матрицы')
+        self.initUI()
+        self.show()
 
-
-
-
-
-
-
-
-
-
-
+    def initUI(self):
+        self.buttonNewWind4 = QPushButton('Назад', self)
+        self.buttonNewWind4.move(10, 10)
+        self.buttonNewWind4.setFixedSize(80, 40)
+        self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonNewWind4.clicked.connect(self.OpenMainWindow)
+           
+    def OpenMainWindow(self):
+        self.MainWindow = MainWindow()
+        self.MainWindow.show()
+        self.close()
+        
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
