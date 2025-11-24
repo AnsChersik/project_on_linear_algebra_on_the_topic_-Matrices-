@@ -13,21 +13,20 @@ class MainWindow(QWidget):
         self.show()
 
     def initUI(self):
-        self.h1LabelMW = QLabel('Добропаожаловать на курс линейной алгебре', self)
+        self.h1LabelMW = QLabel('Добро пожаловать на курс линейной алгебре', self)
         self.h1LabelMW.move(175, 20)
         self.h1LabelMW.setStyleSheet('color: white; font-size: 20px; font-family: Verdana')
 
-        
         self.h2LabelMW = QLabel('по теме "Матрицы"', self)
         self.h2LabelMW.move(300, 50)
         self.h2LabelMW.setStyleSheet('color: white; font-size: 18px; font-family: Verdana')
 
-        self.imageCours = './photoes/MainWindow_photoes_Matric.jpg'
+        self.imageMWMatric = './data/MainWindow_photoes_Matric.jpg'
         self.imageLabel = QLabel(self)
         self.imageLabel.move(190, 100)
         self.imageLabel.setStyleSheet('border: 2px solid black')
 
-        self.imagePixmap = QPixmap(self.imageCours)
+        self.imagePixmap = QPixmap(self.imageMWMatric)
         self.imageLabel.setPixmap(self.imagePixmap)
 
         self.pLabelDescPrt1= QLabel('Мы предлагаем вам изучить темы предложенные ниже,', self)
@@ -109,7 +108,7 @@ class WindowMatrices(QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet('background-color: #464168')
-        self.setGeometry(300, 50, 800, 650)
+        self.setGeometry(100, 40, 1200, 850)
         self.setWindowTitle('Матрицы')
         self.initUI()
         self.show()
@@ -120,23 +119,112 @@ class WindowMatrices(QWidget):
         self.buttonNewWind4.setFixedSize(80, 40)
         self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
         self.buttonNewWind4.clicked.connect(self.OpenMainWindow)
-           
+
+        self.h1LabelWM = QLabel('Что такое матрици?', self)
+        self.h1LabelWM.move(450, 10)
+        self.h1LabelWM.setStyleSheet('color: white; font-size: 24px; font-family: Verdana')
+
+        self.pLabelWM1 = QLabel('Матрица представляет собой таблицу, состоящую из чисел, организованных в прямоугольном формате', self)
+        self.pLabelWM1.move(60, 60)
+        self.pLabelWM1.setStyleSheet('color: white; font-size: 20px; font-family: Verdana')
+
+        self.pLabelWM2 = QLabel(' Матрицы обозначаются заглавными латинскими буквами', self)
+        self.pLabelWM2.move(53, 85)
+        self.pLabelWM2.setStyleSheet('color: white; font-size: 20px; font-family: Verdana')
+
+        self.imageWMMatric = './data/WindowMatrices_photoes_Matric.png'
+        self.imageLabel = QLabel(self)
+        self.imageLabel.move(370, 130)
+        self.imageLabel.setStyleSheet('border: 2px solid black')
+
+        self.imagePixmap = QPixmap(self.imageWMMatric)
+        self.imageLabel.setPixmap(self.imagePixmap)
+
+        self.pLabelWM2 = QLabel('Если матрица имеет одинаковое количество строк и столбцов, она называется квадратной', self)
+        self.pLabelWM2.move(60, 390)
+        self.pLabelWM2.setStyleSheet('color: white; font-size: 20px; font-family: Verdana')
+
+        self.pLabelWM3 = QLabel('Векторами называют матрицы, которые содержат только одну строку или один столбец', self)
+        self.pLabelWM3.move(60, 415)
+        self.pLabelWM3.setStyleSheet('color: white; font-size: 20px; font-family: Verdana')
+
+        self.imageWMMatric1 = './data/WindowMatrices_photoes_MatricKvadrat.png'
+        self.imageLabe2 = QLabel(self)
+        self.imageLabe2.move(270, 450)
+        self.imageLabe2.setStyleSheet('border: 2px solid black')
+
+        self.imagePixmap = QPixmap(self.imageWMMatric1)
+        self.imageLabe2.setPixmap(self.imagePixmap)
+
+        self.imageWMMatric2 = './data/WindowMatrices_photoes_MatricVector.png'
+        self.imageLabe3 = QLabel(self)
+        self.imageLabe3.move(750, 450)
+        self.imageLabe3.setStyleSheet('border: 2px solid black')
+
+        self.imagePixmap = QPixmap(self.imageWMMatric2)
+        self.imageLabe3.setPixmap(self.imagePixmap)
+
+        self.pLabelWM4 = QLabel('Квадратная матрица', self)
+        self.pLabelWM4.move(350, 660)
+        self.pLabelWM4.setStyleSheet('color: white; font-size: 20px; font-family: Verdana')
+
+        self.pLabelWM5 = QLabel('Вектор матрицы', self)
+        self.pLabelWM5.move(760, 660)
+        self.pLabelWM5.setStyleSheet('color: white; font-size: 20px; font-family: Verdana')
+
+        self.pLabelWM6 = QLabel('Главное преимущество матриц заключается в их высокой скорости обработки и масштабируемости', self)
+        self.pLabelWM6.move(60, 710)
+        self.pLabelWM6.setStyleSheet('color: white; font-size: 20px; font-family: Verdana')
+
+        self.pLabelWM7 = QLabel('Современные компьютеры способны выполнять миллиарды операций с матрицами за секунду', self)
+        self.pLabelWM7.move(60, 740)
+        self.pLabelWM7.setStyleSheet('color: white; font-size: 20px; font-family: Verdana')
+
+        self.buttonNewWind4 = QPushButton('Перейти к тесту', self)
+        self.buttonNewWind4.move(10, 780)
+        self.buttonNewWind4.setFixedSize(150, 40)
+        self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonNewWind4.clicked.connect(self.OpenTestMatric)
+
     def OpenMainWindow(self):
         self.MainWindow = MainWindow()
         self.MainWindow.show()
         self.close()
 
+    def OpenTestMatric(self):
+        self.MainWindow = WindowMatricesTest()
+        self.MainWindow.show()
+        self.close()
 
 
 
+class WindowMatricesTest(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.setStyleSheet('background-color: #464168')
+        self.setGeometry(100, 40, 1200, 850)
+        self.setWindowTitle('Тест')
+        self.initUI()
+        self.show()
 
+    def initUI(self):
+        self.buttonNewWind4 = QPushButton('Назад', self)
+        self.buttonNewWind4.move(10, 10)
+        self.buttonNewWind4.setFixedSize(80, 40)
+        self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonNewWind4.clicked.connect(self.OpenMainWindow)
+
+    def OpenMainWindow(self):
+        self.MainWindow = WindowMatrices()
+        self.MainWindow.show()
+        self.close()
 
 class WindowTransposition(QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet('background-color: #464168')
         self.setGeometry(300, 50, 800, 650)
-        self.setWindowTitle('Матрицы')
+        self.setWindowTitle('Транспонирование матриц')
         self.initUI()
         self.show()
 
@@ -157,7 +245,7 @@ class WindowOperations(QWidget):
         super().__init__()
         self.setStyleSheet('background-color: #464168')
         self.setGeometry(300, 50, 800, 650)
-        self.setWindowTitle('Матрицы')
+        self.setWindowTitle('Операции с матрицами')
         self.initUI()
         self.show()
 
@@ -178,7 +266,7 @@ class WindowKramer(QWidget):
         super().__init__()
         self.setStyleSheet('background-color: #464168')
         self.setGeometry(300, 50, 800, 650)
-        self.setWindowTitle('Матрицы')
+        self.setWindowTitle('Метод Крамера')
         self.initUI()
         self.show()
 
@@ -193,7 +281,7 @@ class WindowKramer(QWidget):
         self.MainWindow = MainWindow()
         self.MainWindow.show()
         self.close()
-        
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
