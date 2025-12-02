@@ -1,9 +1,9 @@
 import sys 
-from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QPushButton
+from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QRadioButton, QButtonGroup, QScrollArea, QVBoxLayout
 from PyQt6.QtGui import QPixmap
 
 
-class MainWindow(QWidget):
+class Main_window(QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet('background-color: #464168')
@@ -50,7 +50,7 @@ class MainWindow(QWidget):
         self.buttonNewWind1.move(270, 430)
         self.buttonNewWind1.setFixedSize(80, 40)
         self.buttonNewWind1.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonNewWind1.clicked.connect(self.OpenWinMatric)
+        self.buttonNewWind1.clicked.connect(self.open_window_matrices)
            
         self.pLabelLi2 = QLabel('Транспонирование', self)
         self.pLabelLi2.move(400, 400)
@@ -60,7 +60,7 @@ class MainWindow(QWidget):
         self.buttonNewWind2.move(610, 430)
         self.buttonNewWind2.setFixedSize(80, 40)
         self.buttonNewWind2.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonNewWind2.clicked.connect(self.OpenWinTransp)
+        self.buttonNewWind2.clicked.connect(self.open_window_transposition)
            
         self.pLabelLi3 = QLabel('Операции матриц', self)
         self.pLabelLi3.move(60, 500)
@@ -70,7 +70,7 @@ class MainWindow(QWidget):
         self.buttonNewWind3.move(270, 530)
         self.buttonNewWind3.setFixedSize(80, 40)
         self.buttonNewWind3.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonNewWind3.clicked.connect(self.OpenWinOper)
+        self.buttonNewWind3.clicked.connect(self.open_window_operations)
            
         self.pLabelLi4 = QLabel('Метод Крамера', self)
         self.pLabelLi4.move(400, 500)
@@ -80,31 +80,31 @@ class MainWindow(QWidget):
         self.buttonNewWind4.move(610, 530)
         self.buttonNewWind4.setFixedSize(80, 40)
         self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonNewWind4.clicked.connect(self.OpenWinKramer)
+        self.buttonNewWind4.clicked.connect(self.open_window_kramer)
            
-    def OpenWinMatric(self):
-        self.windowMatric = WindowMatrices()
+    def open_window_matrices(self):
+        self.windowMatric = Window_matrices()
         self.windowMatric.show()
         self.close()
 
 
-    def OpenWinTransp(self):
-        self.winTransp = WindowTransposition()
+    def open_window_transposition(self):
+        self.winTransp = Window_transposition()
         self.winTransp.show()
         self.close()
 
-    def OpenWinOper(self):
-        self.winOper = WindowOperations()
+    def open_window_operations(self):
+        self.winOper = Window_operations()
         self.winOper.show()
         self.close()
 
-    def OpenWinKramer(self):
-        self.winKramer = WindowKramer()
+    def open_window_kramer(self):
+        self.winKramer = Window_kramer()
         self.winKramer.show()
         self.close()
 
 
-class WindowMatrices(QWidget):
+class Window_matrices(QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet('background-color: #464168')
@@ -118,7 +118,7 @@ class WindowMatrices(QWidget):
         self.buttonNewWind4.move(10, 10)
         self.buttonNewWind4.setFixedSize(80, 40)
         self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonNewWind4.clicked.connect(self.OpenMainWindow)
+        self.buttonNewWind4.clicked.connect(self.open_main_window)
 
         self.h1LabelWM = QLabel('Что такое матрици?', self)
         self.h1LabelWM.move(450, 10)
@@ -184,21 +184,21 @@ class WindowMatrices(QWidget):
         self.buttonNewWind4.move(10, 780)
         self.buttonNewWind4.setFixedSize(150, 40)
         self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonNewWind4.clicked.connect(self.OpenTestMatric)
+        self.buttonNewWind4.clicked.connect(self.open_test_matrices)
 
-    def OpenMainWindow(self):
-        self.MainWindow = MainWindow()
+    def open_main_window(self):
+        self.MainWindow = Main_window()
         self.MainWindow.show()
         self.close()
 
-    def OpenTestMatric(self):
-        self.MainWindow = WindowMatricesTest()
+    def open_test_matrices(self):
+        self.MainWindow = Window_matrices_test()
         self.MainWindow.show()
         self.close()
 
 
 
-class WindowMatricesTest(QWidget):
+class Window_matrices_test(QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet('background-color: #464168')
@@ -212,14 +212,14 @@ class WindowMatricesTest(QWidget):
         self.buttonNewWind4.move(10, 10)
         self.buttonNewWind4.setFixedSize(80, 40)
         self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonNewWind4.clicked.connect(self.OpenMainWindow)
+        self.buttonNewWind4.clicked.connect(self.open_main_window)
 
-    def OpenMainWindow(self):
-        self.MainWindow = WindowMatrices()
+    def open_main_window(self):
+        self.MainWindow = Window_matrices()
         self.MainWindow.show()
         self.close()
 
-class WindowTransposition(QWidget):
+class Window_transposition(QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet('background-color: #464168')
@@ -233,7 +233,7 @@ class WindowTransposition(QWidget):
         self.buttonWT.move(10, 10)
         self.buttonWT.setFixedSize(80, 40)
         self.buttonWT.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonWT.clicked.connect(self.OpenMainWindow)
+        self.buttonWT.clicked.connect(self.open_main_window)
            
         self.h1LabelWT = QLabel('Транспонирование матриц', self)
         self.h1LabelWT.move(450, 10)
@@ -283,19 +283,19 @@ class WindowTransposition(QWidget):
         self.buttonTestW4.move(10, 700)
         self.buttonTestW4.setFixedSize(150, 40)
         self.buttonTestW4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonTestW4.clicked.connect(self.OpenTestTransp)
+        self.buttonTestW4.clicked.connect(self.open_test_transposition)
 
-    def OpenMainWindow(self):
-        self.MainWindow = MainWindow()
+    def open_main_window(self):
+        self.MainWindow = Main_window()
         self.MainWindow.show()
         self.close()
 
-    def OpenTestTransp(self):
-        self.MainWindow = WindowMatricesTest()
+    def open_test_transposition(self):
+        self.MainWindow = Window_matrices_test()
         self.MainWindow.show()
         self.close()
 
-class WindowOperations(QWidget):
+class Window_operations(QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet('background-color: #464168')
@@ -309,7 +309,7 @@ class WindowOperations(QWidget):
         self.buttonNewWind4.move(10, 10)
         self.buttonNewWind4.setFixedSize(80, 40)
         self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonNewWind4.clicked.connect(self.OpenMainWindow)
+        self.buttonNewWind4.clicked.connect(self.open_main_window)
 
         self.h1LabelWO = QLabel('Операции с матрицами', self)
         self.h1LabelWO.move(450, 10)
@@ -355,19 +355,19 @@ class WindowOperations(QWidget):
         self.buttonTestW3.move(10, 700)
         self.buttonTestW3.setFixedSize(150, 40)
         self.buttonTestW3.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonTestW3.clicked.connect(self.OpenTestOper)
+        self.buttonTestW3.clicked.connect(self.open_test_operations)
 
-    def OpenMainWindow(self):
-        self.MainWindow = MainWindow()
+    def open_main_window(self):
+        self.MainWindow = Main_window()
         self.MainWindow.show()
         self.close()
 
-    def OpenTestOper(self):
-        self.MainWindow = WindowMatricesTest()
+    def open_test_operations(self):
+        self.MainWindow = Window_matrices_test()
         self.MainWindow.show()
         self.close()
 
-class WindowKramer(QWidget):
+class Window_kramer(QWidget):
     def __init__(self):
         super().__init__()
         self.setStyleSheet('background-color: #464168')
@@ -381,7 +381,7 @@ class WindowKramer(QWidget):
         self.buttonNewWind4.move(10, 10)
         self.buttonNewWind4.setFixedSize(80, 40)
         self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonNewWind4.clicked.connect(self.OpenMainWindow)
+        self.buttonNewWind4.clicked.connect(self.open_main_window)
 
         self.h1LabelWO = QLabel('Метод Крамера', self)
         self.h1LabelWO.move(490, 10)
@@ -442,21 +442,21 @@ class WindowKramer(QWidget):
         self.buttonTestW3.move(10, 700)
         self.buttonTestW3.setFixedSize(150, 40)
         self.buttonTestW3.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonTestW3.clicked.connect(self.OpenTestOper)
+        self.buttonTestW3.clicked.connect(self.open_test_kramer)
 
-    def OpenMainWindow(self):
-        self.MainWindow = MainWindow()
+    def open_main_window(self):
+        self.MainWindow = Main_window()
         self.MainWindow.show()
         self.close()
 
-    def OpenTestOper(self):
-        self.MainWindow = WindowMatricesTest()
+    def open_test_kramer(self):
+        self.MainWindow = Window_matrices_test()
         self.MainWindow.show()
         self.close()
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    ex = MainWindow()
+    ex = Main_window()
     ex.show()
     sys.exit(app.exec())
