@@ -87,7 +87,7 @@ class Window_kramer(QWidget):
         self.close()
 
     def open_test_kramer(self):
-        from window_matrices_test import Window_matrices_test
-        self.MainWindow = Window_matrices_test()
+        from window_authorization_kramer import Window_authorization_kramer
+        self.MainWindow = Window_authorization_kramer()
         self.MainWindow.show()
         self.close()

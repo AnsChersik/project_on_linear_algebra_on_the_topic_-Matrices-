@@ -10,7 +10,7 @@ from PyQt6.QtGui import QPixmap
 conn = sqlite3.connect('CoursLineMath.sql')
 cursor = conn.cursor()
 
-class Window_matrices_test(QWidget):
+class Window_kramer_test(QWidget):
     def __init__(self, username):
         super().__init__()
         self.username = username
@@ -20,95 +20,95 @@ class Window_matrices_test(QWidget):
 
     def load_questions(self):
         questions = [{
-            'question_text': 'Вопрос: Матрица - это?...',
-            'question_image': './data/WindowMatricesTest_photoes_Matric.png',  
-            'answers': [
-                {'text': 'Таблица', 'image': None},
-                {'text': 'Фильм', 'image': None},
-                {'text': 'Слово', 'image': None}
-            ],
-            'correct': 'Таблица'
-        }, {
-            'question_text': 'Вопрос: Из чего состоит матрица?',
+            'question_text': 'Вопрос: Что нужно найти для работы с методом Крамера?',
             'question_image': None,  
             'answers': [
-                {'text': 'Из букв', 'image': None},
-                {'text': 'Из звуков', 'image': None},
-                {'text': 'Из чисел', 'image': None}
+                {'text': 'Определитель', 'image': None},
+                {'text': 'Диагональ', 'image': None},
+                {'text': 'Корень', 'image': None}
             ],
-            'correct': 'Из чисел'
+            'correct': 'Определитель'
         }, {
-            'question_text': 'Вопрос: Что это?',
-            'question_image': './data/WindowMatricesTest_photoes_Matric2.png',  
-            'answers': [
-                {'text': 'Фотография', 'image': None},
-                {'text': 'Матрица', 'image': None},
-                {'text': 'Прямоугольник', 'image': None}
-            ],
-            'correct': 'Матрица'
-        }, {
-            'question_text': 'Вопрос: Какими буквами называют матрицы?',
+            'question_text': 'Вопрос: По какой формуле ищется определитель?',
             'question_image': None,  
             'answers': [
-                {'text': 'Латинскими', 'image': None},
-                {'text': 'Заглавными', 'image': None},
-                {'text': 'Латинскими заглавными', 'image': None}
+                {'text': '1', 'image': './data/WindowKramerTest_photoes_OpredUnCorr1.png'},
+                {'text': '2', 'image': './data/WindowKramerTest_photoes_OpredUnCorr.png'},
+                {'text': '3', 'image': './data/WindowKramerTest_photoes_OpredCorr.png'}
             ],
-            'correct': 'Латинскими заглавными'
+            'correct': '3'
         }, {
-            'question_text': 'Вопрос: Как можно назвать матрицу?',
+            'question_text': 'Вопрос: Сколько определителей основной матрицы надо найти для метода Крамера??',
             'question_image': None,  
             'answers': [
-                {'text': 'a', 'image': None},
-                {'text': 'A', 'image': None},
-                {'text': 'A0A0A0A0A)', 'image': None}
+                {'text': '1', 'image': None},
+                {'text': '4', 'image': None},
+                {'text': '3', 'image': None}
             ],
-            'correct': 'A'
+            'correct': '1'
         }, {
-            'question_text': 'Вопрос: Как называется матрица с равными количествами строк и столбцов?',
-            'question_image': './data/WindowMatricesTest_photoes_MatricKvadrat.png',  
-            'answers': [
-                {'text': 'Квадратная', 'image': None},
-                {'text': 'Равносторонняя', 'image': None},
-                {'text': 'Кубическая', 'image': None}
-            ],
-            'correct': 'Квадратная'
-        }, {
-            'question_text': 'Вопрос: Как называеют матрицу с одной строкой?',
+            'question_text': 'Вопрос: Сколько определителей надо найти всего??',
             'question_image': None,  
             'answers': [
-                {'text': 'Лучами', 'image': None},
-                {'text': 'Векторами', 'image': None},
-                {'text': 'Прямой', 'image': None}
+                {'text': '1', 'image': None},
+                {'text': '4', 'image': None},
+                {'text': '3', 'image': None}
             ],
-            'correct': 'Векторами'
+            'correct': '4'
         }, {
-            'question_text': 'Вопрос: Как называеют матрицу с одним столбцом?',
+            'question_text': 'Вопрос: Сколько простых определителей надо найти?',
             'question_image': None,  
             'answers': [
-                {'text': 'Прямой', 'image': None},
-                {'text': 'Лучами', 'image': None},
-                {'text': 'Векторами', 'image': None}
+                 {'text': '1', 'image': None},
+                {'text': '4', 'image': None},
+                {'text': '3', 'image': None}
             ],
-            'correct': 'Векторами'
+            'correct': '3'
         }, {
-            'question_text': 'Вопрос: Что не являеться преимуществом матриц?',
+            'question_text': 'Вопрос: Что нужно сделать в конце?',
             'question_image': None,  
             'answers': [
-                {'text': 'Высокая скорость обработки', 'image': None},
-                {'text': 'Форма', 'image': None},
-                {'text': 'Масштабируемость', 'image': None}
+                {'text': 'Разделить каждый определитель на общий', 'image': None},
+                {'text': 'Написать ответ', 'image': None},
+                {'text': 'Поставить точку', 'image': None}
             ],
-            'correct': 'Форма'
+            'correct': 'Разделить каждый определитель на общий'
         }, {
-            'question_text': 'Вопрос: Кто способен быстро обрабатывать и работать с матрицами?',
+            'question_text': 'Вопрос: Для сегоя нужен метод Крамера?',
             'question_image': None,  
             'answers': [
-                {'text': 'Компьютер', 'image': None},
-                {'text': 'Гений', 'image': None},
-                {'text': 'Миллиардер', 'image': None}
+                {'text': 'Чтоб был', 'image': None},
+                {'text': 'Чтобы решать линейные уравнения', 'image': None},
+                {'text': 'Чтобы учить', 'image': None}
             ],
-            'correct': 'Компьютер'
+            'correct': 'Чтобы решать линейные уравнения'
+        }, {
+            'question_text': 'Вопрос: Что нужно делать чтобы умножить матрицу на число?',
+            'question_image': None,  
+            'answers': [
+                {'text': 'Умножить каждый элемент на число', 'image': None},
+                {'text': 'Умножить тольцо диагональ', 'image': None},
+                {'text': 'Умножить на количество строк и столбцов число', 'image': None}
+            ],
+            'correct': 'Умножить каждый элемент на число'
+        }, {
+            'question_text': 'Вопрос: Сколько произведений нвходиться при поиске определителя?',
+            'question_image': None,  
+            'answers': [
+                {'text': '5', 'image': None},
+                {'text': '6', 'image': None},
+                {'text': '7', 'image': None}
+            ],
+            'correct': '6'
+        }, {
+            'question_text': 'Вопрос: Сколько в сумме вычислений проводиться за метод Крамера?',
+            'question_image': None,  
+            'answers': [
+                {'text': '7', 'image': None},
+                {'text': '8', 'image': None},
+                {'text': '10', 'image': None}
+            ],
+            'correct': '7'
         }]
         return questions
 
@@ -232,7 +232,7 @@ class Window_matrices_test(QWidget):
         date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         cursor.execute(
             'INSERT INTO Results (username, id_topic, score, max, date) VALUES ( ?, ?, ?, ?, ?)',
-            ( self.username, 1, score, total, date_str)
+            ( self.username, 2, score, total, date_str)
         )
         conn.commit()
 
@@ -261,4 +261,3 @@ class Window_matrices_test(QWidget):
         self.MainWindow = Window_matrices()
         self.MainWindow.show()
         self.close()
-

@@ -10,7 +10,7 @@ from PyQt6.QtGui import QPixmap
 conn = sqlite3.connect('CoursLineMath.sql')
 cursor = conn.cursor()
 
-class Window_matrices_test(QWidget):
+class Window_transposition_test(QWidget):
     def __init__(self, username):
         super().__init__()
         self.username = username
@@ -20,95 +20,95 @@ class Window_matrices_test(QWidget):
 
     def load_questions(self):
         questions = [{
-            'question_text': 'Вопрос: Матрица - это?...',
-            'question_image': './data/WindowMatricesTest_photoes_Matric.png',  
-            'answers': [
-                {'text': 'Таблица', 'image': None},
-                {'text': 'Фильм', 'image': None},
-                {'text': 'Слово', 'image': None}
-            ],
-            'correct': 'Таблица'
-        }, {
-            'question_text': 'Вопрос: Из чего состоит матрица?',
+            'question_text': 'Вопрос: Что такое n в матрицах?',
             'question_image': None,  
             'answers': [
-                {'text': 'Из букв', 'image': None},
-                {'text': 'Из звуков', 'image': None},
-                {'text': 'Из чисел', 'image': None}
+                {'text': 'Буква', 'image': None},
+                {'text': 'Случайное число', 'image': None},
+                {'text': 'Количество столбцов', 'image': None}
             ],
-            'correct': 'Из чисел'
+            'correct': 'Количество столбцов'
         }, {
-            'question_text': 'Вопрос: Что это?',
-            'question_image': './data/WindowMatricesTest_photoes_Matric2.png',  
+            'question_text': 'Вопрос: Что такое m в матрицах?',
+            'question_image': None,  
             'answers': [
-                {'text': 'Фотография', 'image': None},
-                {'text': 'Матрица', 'image': None},
-                {'text': 'Прямоугольник', 'image': None}
+                {'text': '13 буква в алфавите', 'image': None},
+                {'text': 'Количество строк', 'image': None},
+                {'text': 'Что-то', 'image': None}
             ],
-            'correct': 'Матрица'
+            'correct': 'Количество строк'
         }, {
-            'question_text': 'Вопрос: Какими буквами называют матрицы?',
+            'question_text': 'Вопрос: Что такое траспонирвоание матриц?',
+            'question_image': None,  
+            'answers': [
+                {'text': 'Перестановка строк и столбцов', 'image': None},
+                {'text': 'Фонетический разбор', 'image': None},
+                {'text': 'Раскрытие скобок', 'image': None}
+            ],
+            'correct': 'Перестановка строк и столбцов'
+        }, {
+            'question_text': 'Вопрос: Какой буквой обозначается транспонирование матриц?',
             'question_image': None,  
             'answers': [
                 {'text': 'Латинскими', 'image': None},
-                {'text': 'Заглавными', 'image': None},
-                {'text': 'Латинскими заглавными', 'image': None}
+                {'text': 'T', 'image': None},
+                {'text': 'A', 'image': None}
             ],
-            'correct': 'Латинскими заглавными'
+            'correct': 'T'
         }, {
-            'question_text': 'Вопрос: Как можно назвать матрицу?',
+            'question_text': 'Вопрос: Сколько будет строк в матрице после транспонирования?',
+            'question_image': './data/WindowTranspTest_photoes_Matric.png',  
+            'answers': [
+                {'text': '2', 'image': None},
+                {'text': '5', 'image': None},
+                {'text': '4', 'image': None}
+            ],
+            'correct': '2'
+        }, {
+            'question_text': 'Вопрос: Сколько будет строк в матрице после транспонирования?',
+            'question_image': './data/WindowTranspTest_photoes_Matric2.png',  
+            'answers': [
+                {'text': '8', 'image': None},
+                {'text': '5', 'image': None},
+                {'text': '3', 'image': None}
+            ],
+            'correct': '5'
+        }, {
+            'question_text': 'Вопрос: Сколько будет столбцов в матрице после транспонирования??',
+            'question_image': './data/WindowTranspTest_photoes_Matric3.png',  
+            'answers': [
+                {'text': '3', 'image': None},
+                {'text': '4', 'image': None},
+                {'text': '8', 'image': None}
+            ],
+            'correct': '3'
+        }, {
+            'question_text': 'Вопрос: Если в матрице 4 строки и 5 столбцов. Какое число отвечает за m?',
             'question_image': None,  
             'answers': [
-                {'text': 'a', 'image': None},
-                {'text': 'A', 'image': None},
-                {'text': 'A0A0A0A0A)', 'image': None}
+                {'text': '4', 'image': None},
+                {'text': '5', 'image': None},
+                {'text': '3', 'image': None}
             ],
-            'correct': 'A'
+            'correct': '4'
         }, {
-            'question_text': 'Вопрос: Как называется матрица с равными количествами строк и столбцов?',
-            'question_image': './data/WindowMatricesTest_photoes_MatricKvadrat.png',  
-            'answers': [
-                {'text': 'Квадратная', 'image': None},
-                {'text': 'Равносторонняя', 'image': None},
-                {'text': 'Кубическая', 'image': None}
-            ],
-            'correct': 'Квадратная'
-        }, {
-            'question_text': 'Вопрос: Как называеют матрицу с одной строкой?',
+            'question_text': 'Вопрос: Если в матрице 6 строки и 25 столбцов. Какое число отвечает за m?',
             'question_image': None,  
             'answers': [
-                {'text': 'Лучами', 'image': None},
-                {'text': 'Векторами', 'image': None},
-                {'text': 'Прямой', 'image': None}
+                {'text': '2', 'image': None},
+                {'text': '6', 'image': None},
+                {'text': '25', 'image': None}
             ],
-            'correct': 'Векторами'
+            'correct': '25'
         }, {
-            'question_text': 'Вопрос: Как называеют матрицу с одним столбцом?',
+            'question_text': 'Вопрос: Если в матрице 12 строки и 2 столбцов. Какое число отвечает за n?',
             'question_image': None,  
             'answers': [
-                {'text': 'Прямой', 'image': None},
-                {'text': 'Лучами', 'image': None},
-                {'text': 'Векторами', 'image': None}
+                {'text': '12', 'image': None},
+                {'text': '1', 'image': None},
+                {'text': '2', 'image': None}
             ],
-            'correct': 'Векторами'
-        }, {
-            'question_text': 'Вопрос: Что не являеться преимуществом матриц?',
-            'question_image': None,  
-            'answers': [
-                {'text': 'Высокая скорость обработки', 'image': None},
-                {'text': 'Форма', 'image': None},
-                {'text': 'Масштабируемость', 'image': None}
-            ],
-            'correct': 'Форма'
-        }, {
-            'question_text': 'Вопрос: Кто способен быстро обрабатывать и работать с матрицами?',
-            'question_image': None,  
-            'answers': [
-                {'text': 'Компьютер', 'image': None},
-                {'text': 'Гений', 'image': None},
-                {'text': 'Миллиардер', 'image': None}
-            ],
-            'correct': 'Компьютер'
+            'correct': '2'
         }]
         return questions
 
@@ -232,7 +232,7 @@ class Window_matrices_test(QWidget):
         date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         cursor.execute(
             'INSERT INTO Results (username, id_topic, score, max, date) VALUES ( ?, ?, ?, ?, ?)',
-            ( self.username, 1, score, total, date_str)
+            ( self.username, 2, score, total, date_str)
         )
         conn.commit()
 

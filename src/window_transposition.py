@@ -75,7 +75,7 @@ class Window_transposition(QWidget):
         self.close()
 
     def open_test_transposition(self):
-        from window_matrices_test import Window_matrices_test
-        self.test_window = Window_matrices_test()
+        from window_authorization_transposition import Window_authorization_transposition
+        self.test_window = Window_authorization_transposition()
         self.test_window.show()
         self.close()

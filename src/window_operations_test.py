@@ -10,7 +10,7 @@ from PyQt6.QtGui import QPixmap
 conn = sqlite3.connect('CoursLineMath.sql')
 cursor = conn.cursor()
 
-class Window_matrices_test(QWidget):
+class Window_operations_test(QWidget):
     def __init__(self, username):
         super().__init__()
         self.username = username
@@ -20,95 +20,95 @@ class Window_matrices_test(QWidget):
 
     def load_questions(self):
         questions = [{
-            'question_text': 'Вопрос: Матрица - это?...',
-            'question_image': './data/WindowMatricesTest_photoes_Matric.png',  
-            'answers': [
-                {'text': 'Таблица', 'image': None},
-                {'text': 'Фильм', 'image': None},
-                {'text': 'Слово', 'image': None}
-            ],
-            'correct': 'Таблица'
-        }, {
-            'question_text': 'Вопрос: Из чего состоит матрица?',
+            'question_text': 'Вопрос: Что нельзя выполнять с матрицами?',
             'question_image': None,  
             'answers': [
-                {'text': 'Из букв', 'image': None},
-                {'text': 'Из звуков', 'image': None},
-                {'text': 'Из чисел', 'image': None}
+                {'text': 'Вычитание', 'image': None},
+                {'text': 'Слажение', 'image': None},
+                {'text': 'Деление', 'image': None}
             ],
-            'correct': 'Из чисел'
+            'correct': 'Деление'
         }, {
-            'question_text': 'Вопрос: Что это?',
-            'question_image': './data/WindowMatricesTest_photoes_Matric2.png',  
-            'answers': [
-                {'text': 'Фотография', 'image': None},
-                {'text': 'Матрица', 'image': None},
-                {'text': 'Прямоугольник', 'image': None}
-            ],
-            'correct': 'Матрица'
-        }, {
-            'question_text': 'Вопрос: Какими буквами называют матрицы?',
+            'question_text': 'Вопрос: Какое есть условие на сложение и вычитание?',
             'question_image': None,  
             'answers': [
-                {'text': 'Латинскими', 'image': None},
-                {'text': 'Заглавными', 'image': None},
-                {'text': 'Латинскими заглавными', 'image': None}
+                {'text': 'Они все квадратыне', 'image': None},
+                {'text': 'Называются одинаеово', 'image': None},
+                {'text': 'Имеют одинаковы размер', 'image': None}
             ],
-            'correct': 'Латинскими заглавными'
+            'correct': 'Имеют одинаковы размер'
         }, {
-            'question_text': 'Вопрос: Как можно назвать матрицу?',
+            'question_text': 'Вопрос: Какие матрицы можно сложить?',
             'question_image': None,  
             'answers': [
-                {'text': 'a', 'image': None},
-                {'text': 'A', 'image': None},
-                {'text': 'A0A0A0A0A)', 'image': None}
+                {'text': '2x2 3x3', 'image': None},
+                {'text': '3x3 3x3', 'image': None},
+                {'text': '2x3 3x2', 'image': None}
             ],
-            'correct': 'A'
+            'correct': '3x3 3x3'
         }, {
-            'question_text': 'Вопрос: Как называется матрица с равными количествами строк и столбцов?',
-            'question_image': './data/WindowMatricesTest_photoes_MatricKvadrat.png',  
-            'answers': [
-                {'text': 'Квадратная', 'image': None},
-                {'text': 'Равносторонняя', 'image': None},
-                {'text': 'Кубическая', 'image': None}
-            ],
-            'correct': 'Квадратная'
-        }, {
-            'question_text': 'Вопрос: Как называеют матрицу с одной строкой?',
+            'question_text': 'Вопрос: Какие матрицы можно вычитать?',
             'question_image': None,  
             'answers': [
-                {'text': 'Лучами', 'image': None},
-                {'text': 'Векторами', 'image': None},
-                {'text': 'Прямой', 'image': None}
+                {'text': '2x4 4x2', 'image': None},
+                {'text': '6x9 6x9', 'image': None},
+                {'text': '2x2 3x2', 'image': None}
             ],
-            'correct': 'Векторами'
+            'correct': '6x9 6x9'
         }, {
-            'question_text': 'Вопрос: Как называеют матрицу с одним столбцом?',
+            'question_text': 'Вопрос: Сколько будет строк в матрице после транспонирования?',
             'question_image': None,  
             'answers': [
-                {'text': 'Прямой', 'image': None},
-                {'text': 'Лучами', 'image': None},
-                {'text': 'Векторами', 'image': None}
+                {'text': '2', 'image': None},
+                {'text': '5', 'image': None},
+                {'text': '4', 'image': None}
             ],
-            'correct': 'Векторами'
+            'correct': '2'
         }, {
-            'question_text': 'Вопрос: Что не являеться преимуществом матриц?',
+            'question_text': 'Вопрос: Чтобы сложить матрицы в первой строке что будет?',
             'question_image': None,  
             'answers': [
-                {'text': 'Высокая скорость обработки', 'image': None},
-                {'text': 'Форма', 'image': None},
-                {'text': 'Масштабируемость', 'image': None}
+                {'text': 'a11+b11 a21+b21 a31+b31', 'image': None},
+                {'text': 'a11+b11 a22+b22 a33+b33', 'image': None},
+                {'text': 'a11+b11 a12+b12 a13+b13', 'image': None}
             ],
-            'correct': 'Форма'
+            'correct': 'a11+b11 a21+b21 a31+b31'
         }, {
-            'question_text': 'Вопрос: Кто способен быстро обрабатывать и работать с матрицами?',
+            'question_text': 'Вопрос: Чтобы сложить матрицы в третьей строке что будет?',
             'question_image': None,  
             'answers': [
-                {'text': 'Компьютер', 'image': None},
-                {'text': 'Гений', 'image': None},
-                {'text': 'Миллиардер', 'image': None}
+                {'text': 'a11+b31 a21+b31 a31+b31', 'image': None},
+                {'text': 'a11+b11 a22+b22 a33+b33', 'image': None},
+                {'text': 'a31+b31 a32+b32 a33+b33', 'image': None}
             ],
-            'correct': 'Компьютер'
+            'correct': 'a31+b31 a32+b32 a33+b33'
+        }, {
+            'question_text': 'Вопрос: Что нужно делать чтобы умножить матрицу на число?',
+            'question_image': None,  
+            'answers': [
+                {'text': 'Умножить каждый элемент на число', 'image': None},
+                {'text': 'Умножить тольцо диагональ', 'image': None},
+                {'text': 'Умножить на количество строк и столбцов число', 'image': None}
+            ],
+            'correct': 'Умножить каждый элемент на число'
+        }, {
+            'question_text': 'Вопрос: Какой буквой обозначаеться число на которое усножают?',
+            'question_image': None,  
+            'answers': [
+                {'text': 'K', 'image': None},
+                {'text': 'C', 'image': None},
+                {'text': 'A', 'image': None}
+            ],
+            'correct': 'K'
+        }, {
+            'question_text': 'Вопрос: Где правильный ответ?',
+            'question_image': './data/WindowOperationsTest_photoes_OperationUmnNaNum.png',  
+            'answers': [
+                {'text': '1', 'image': './data/WindowOperationsTest_photoes_OperationNumUncorr.png'},
+                {'text': '2', 'image': './data/WindowOperationsTest_photoes_OperationNumCorr.png'},
+                {'text': '3', 'image': './data/WindowOperationsTest_photoes_OperationNumUncorr2.png'}
+            ],
+            'correct': '2'
         }]
         return questions
 
@@ -232,7 +232,7 @@ class Window_matrices_test(QWidget):
         date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         cursor.execute(
             'INSERT INTO Results (username, id_topic, score, max, date) VALUES ( ?, ?, ?, ?, ?)',
-            ( self.username, 1, score, total, date_str)
+            ( self.username, 2, score, total, date_str)
         )
         conn.commit()
 
@@ -261,4 +261,3 @@ class Window_matrices_test(QWidget):
         self.MainWindow = Window_matrices()
         self.MainWindow.show()
         self.close()
-

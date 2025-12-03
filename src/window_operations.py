@@ -72,7 +72,7 @@ class Window_operations(QWidget):
         self.close()
 
     def open_test_operations(self):
-        from window_authorization_matrices import Window_authorization
-        self.MainWindow = Window_authorization()
+        from window_authorization_operations import Window_authorization_operations
+        self.MainWindow = Window_authorization_operations()
         self.MainWindow.show()
         self.close()
