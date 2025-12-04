@@ -41,7 +41,6 @@ class Main_window(QWidget):
         self.pLabelUl.move(20, 370)
         self.pLabelUl.setStyleSheet('color: white; font-size: 16px; font-family: Verdana')
 
-        # Тема 1
         self.pLabelLi1 = QLabel('Матрицы - это...', self)
         self.pLabelLi1.move(60, 400)
         self.pLabelLi1.setFixedSize(300, 90)
@@ -52,7 +51,6 @@ class Main_window(QWidget):
         self.buttonNewWind1.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
         self.buttonNewWind1.clicked.connect(self.open_window_matrices)
 
-        # Тема 2
         self.pLabelLi2 = QLabel('Транспонирование', self)
         self.pLabelLi2.move(400, 400)
         self.pLabelLi2.setFixedSize(300, 90)
@@ -63,7 +61,6 @@ class Main_window(QWidget):
         self.buttonNewWind2.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
         self.buttonNewWind2.clicked.connect(self.open_window_transposition)
 
-        # Тема 3
         self.pLabelLi3 = QLabel('Операции матриц', self)
         self.pLabelLi3.move(60, 500)
         self.pLabelLi3.setFixedSize(300, 90)
@@ -74,7 +71,6 @@ class Main_window(QWidget):
         self.buttonNewWind3.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
         self.buttonNewWind3.clicked.connect(self.open_window_operations)
 
-        # Тема 4
         self.pLabelLi4 = QLabel('Метод Крамера', self)
         self.pLabelLi4.move(400, 500)
         self.pLabelLi4.setFixedSize(300, 90)
@@ -84,6 +80,12 @@ class Main_window(QWidget):
         self.buttonNewWind4.setFixedSize(80, 40)
         self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
         self.buttonNewWind4.clicked.connect(self.open_window_kramer)
+
+        self.buttonNewWind1 = QPushButton('Оставить отзыв', self)
+        self.buttonNewWind1.move(10, 10)
+        self.buttonNewWind1.setFixedSize(140, 40)
+        self.buttonNewWind1.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonNewWind1.clicked.connect(self.open_window_rewiew)
 
     def open_window_matrices(self):
         self.windowMatric = Window_matrices()
@@ -103,4 +105,10 @@ class Main_window(QWidget):
     def open_window_kramer(self):
         self.winKramer = Window_kramer()
         self.winKramer.show()
+        self.close()
+
+    def open_window_rewiew(self):
+        from window_review import Window_review
+        self.MainWindow = Window_review()
+        self.MainWindow.show()
         self.close()

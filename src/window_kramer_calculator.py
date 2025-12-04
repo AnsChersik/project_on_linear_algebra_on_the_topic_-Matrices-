@@ -15,51 +15,34 @@ class Window_kramer_calculator(QWidget):
         self._init_ui()
 
     def _init_ui(self):
-        self.topBar = QWidget()
         self.topLayout = QHBoxLayout()
-        self.topBar.setLayout(self.topLayout)
 
         self.backButton = QPushButton("Назад")
         self.backButton.setFixedSize(100, 28)
-        self.backButton.setStyleSheet(
-            'color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue'
-        )
+        self.backButton.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
         self.backButton.clicked.connect(self.open_kramer_window)
 
         self.topLayout.addWidget(self.backButton, alignment=Qt.AlignmentFlag.AlignLeft)
         self.topLayout.addStretch()
 
-        self.layout.addWidget(self.topBar)
+        self.buttonLoad = QPushButton("Загрузить из файла")
+        self.buttonLoad.setFixedSize(180, 28)
+        self.buttonLoad.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue' )
+        self.buttonLoad.clicked.connect(self.load_from_file)
+
+        self.buttonCalculate = QPushButton("Вычислить")
+        self.buttonCalculate.setFixedSize(180, 28)
+        self.buttonCalculate.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonCalculate.clicked.connect(self.calculate_solution)
+
+        self.topLayout.addWidget(self.buttonLoad)
+        self.topLayout.addWidget(self.buttonCalculate)
+
+        self.layout.addLayout(self.topLayout)
 
         self.labelP = QLabel("Введите коэффициенты системы из 3 уравнений с 3 неизвестными")
         self.labelP.setStyleSheet('color: white; font-size: 16px; font-family: Verdana')
         self.layout.addWidget(self.labelP)
-
-        self.h_layout = QHBoxLayout()
-
-        self.left_widget = QWidget()
-        self.left_layout = QVBoxLayout()
-        self.left_widget.setLayout(self.left_layout)
-
-        self.buttonLoad = QPushButton("Загрузить из файла")
-        self.buttonLoad.setFixedSize(180, 28)
-        self.buttonLoad.setStyleSheet(
-            'color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue'
-        )
-        self.buttonLoad.clicked.connect(self.load_from_file)
-        self.left_layout.addWidget(self.buttonLoad)
-
-        self.buttonCalculate = QPushButton("Вычислить")
-        self.buttonCalculate.setFixedSize(180, 28)
-        self.buttonCalculate.setStyleSheet(
-            'color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue'
-        )
-        self.buttonCalculate.clicked.connect(self.calculate_solution)
-        self.left_layout.addWidget(self.buttonCalculate)
-
-        self.left_layout.addStretch()
-
-        self.h_layout.addWidget(self.left_widget)
 
         self.grid = QGridLayout()
         self.arrayCoeffec = []

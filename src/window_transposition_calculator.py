@@ -14,19 +14,25 @@ class Window_transposition_calculator(QWidget):
         self.setWindowTitle('Матрица и транспонирование')
         self.setGeometry(500, 500, 600, 600)
 
+        self.buttonBack = QPushButton('Назад', self)
+        self.buttonBack.move(10, 10)
+        self.buttonBack.setFixedSize(80, 28)
+        self.buttonBack.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonBack.clicked.connect(self.open_window_transposition)
+
         self.labelSizeMatric = QLabel('Введите размер матрицы (m x n):', self)
         self.labelSizeMatric.setStyleSheet('color: white; font-size: 16px; font-family: Verdana')
-        self.labelSizeMatric.move(10, 10)
+        self.labelSizeMatric.move(10, 38)
 
         self.inputM = QLineEdit(self)
         self.inputM.setStyleSheet('color: white; font-size: 16px; font-family: Verdana')
-        self.inputM.move(10, 40)
+        self.inputM.move(10, 65)
         self.inputM.setFixedSize(150, 25)
         self.inputM.setPlaceholderText("m (строк)")
 
         self.inputN = QLineEdit(self)
         self.inputN.setStyleSheet('color: white; font-size: 16px; font-family: Verdana')
-        self.inputN.move(170, 40)
+        self.inputN.move(170, 65)
         self.inputN.setFixedSize(150, 25)
         self.inputN.setPlaceholderText("n (столбцов)")
 
@@ -47,7 +53,7 @@ class Window_transposition_calculator(QWidget):
 
         self.matrixLayout = QGridLayout()
         self.matrixInputs.setLayout(self.matrixLayout)
-        self.matrixInputs.move(10, 80)
+        self.matrixInputs.move(10, 90)
         self.matrixInputs.hide()
 
         self.buttonTransposer = QPushButton('Транспонировать', self)
@@ -172,3 +178,10 @@ class Window_transposition_calculator(QWidget):
 
         self.labelResults.show()
         self.resultMatrix.show()
+
+    def open_window_transposition(self):
+        from window_transposition import Window_transposition
+        self.test_window = Window_transposition()
+        self.test_window.show()
+        self.close()
+    
