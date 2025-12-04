@@ -13,6 +13,7 @@ cursor = conn.cursor()
 class Window_kramer_test(QWidget):
     def __init__(self, username):
         super().__init__()
+        self.setStyleSheet('background-color: #464168')
         self.username = username
         self.questions = self.load_questions()
         self.selectedAnswers = [None] * len(self.questions)
@@ -113,7 +114,7 @@ class Window_kramer_test(QWidget):
         return questions
 
     def initUI(self):
-        self.setMinimumSize(600, 600)
+        self.setMinimumSize(1000, 600)
         self.setWindowTitle('Тест')
 
         self.mainLayoutTest = QVBoxLayout(self)
@@ -138,6 +139,7 @@ class Window_kramer_test(QWidget):
         self.render_questions()
 
         self.buttonTestFinish = QPushButton('Завершить тест')
+        self.buttonTestFinish.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
         self.buttonTestFinish.clicked.connect(self.render_results)
         self.boxLayout.addWidget(self.buttonTestFinish)
 
@@ -146,6 +148,8 @@ class Window_kramer_test(QWidget):
     def render_questions(self):
         for i, q in enumerate(self.questions):
             quesWidget = QWidget()
+            quesWidget.setStyleSheet('color: white; font-size: 16px; font-family: Verdana')
+
             quesLayout = QVBoxLayout(quesWidget)
 
             quesLabel = QLabel(f"{i+1}. {q['question_text']}")
@@ -162,6 +166,8 @@ class Window_kramer_test(QWidget):
 
             for answer in q['answers']:
                 answerWidget = QWidget()
+                answerWidget.setStyleSheet('color: white; font-size: 16px; font-family: Verdana')
+
                 answerLayout = QHBoxLayout(answerWidget)
 
                 radioButton = QRadioButton(answer['text'])
@@ -200,11 +206,13 @@ class Window_kramer_test(QWidget):
         self.clear_layout(self.boxLayout)
 
         resultLabel = QLabel(f'Вы набрали {score} из {total}')
+        resultLabel.setStyleSheet('color: white; font-size: 16px; font-family: Verdana')
         resultLabel.setAlignment(Qt.AlignmentFlag.AlignCenter)
         self.boxLayout.addWidget(resultLabel)
 
         for i, q in enumerate(self.questions):
             quesLabel = QLabel(f"Вопрос {i+1}: {q['question_text']}")
+            quesLabel.setStyleSheet('color: white; font-size: 16px; font-family: Verdana')
             self.boxLayout.addWidget(quesLabel)
             if q['question_image']:
                 pixmapQues = QPixmap(q['question_image'])
@@ -218,10 +226,11 @@ class Window_kramer_test(QWidget):
             for answer in q['answers']:
                 answerQuesText = answer['text']
                 answerLabel = QLabel(answerQuesText)
+                answerLabel.setStyleSheet('color: white; font-size: 16px; font-family: Verdana')
                 if answerQuesText == answerCorrect:
-                    answerLabel.setStyleSheet("color: green;")
+                    answerLabel.setStyleSheet("color: green; font-size: 16px; font-family: Verdana")
                 if answerQuesText == answerUser and answerQuesText != answerCorrect:
-                    answerLabel.setStyleSheet("color: red;")
+                    answerLabel.setStyleSheet("color: red; font-size: 16px; font-family: Verdana")
                 self.boxLayout.addWidget(answerLabel)
                 if answer['image']:
                     pixmapAns = QPixmap(answer['image'])
@@ -232,7 +241,7 @@ class Window_kramer_test(QWidget):
         date_str = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         cursor.execute(
             'INSERT INTO Results (username, id_topic, score, max, date) VALUES ( ?, ?, ?, ?, ?)',
-            ( self.username, 2, score, total, date_str)
+            ( self.username, 4, score, total, date_str)
         )
         conn.commit()
 

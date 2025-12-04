@@ -1,4 +1,7 @@
-from PyQt6.QtWidgets import QWidget, QLabel, QPushButton
+import sys 
+import shutil
+import os
+from PyQt6.QtWidgets import QWidget, QLabel, QPushButton, QMessageBox
 from PyQt6.QtGui import QPixmap
 
 
@@ -18,6 +21,12 @@ class Window_operations(QWidget):
         self.buttonNewWind4.setFixedSize(80, 40)
         self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
         self.buttonNewWind4.clicked.connect(self.open_main_window)
+
+        self.buttonDownload = QPushButton('Скачать теорию', self)
+        self.buttonDownload.move(1040, 10)
+        self.buttonDownload.setFixedSize(150, 40)
+        self.buttonDownload.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonDownload.clicked.connect(self.download)
 
         self.h1LabelWO = QLabel('Операции с матрицами', self)
         self.h1LabelWO.move(450, 10)
@@ -65,11 +74,38 @@ class Window_operations(QWidget):
         self.buttonTestW3.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
         self.buttonTestW3.clicked.connect(self.open_test_operations)
 
+        self.buttonCalculW3 = QPushButton('Перейти к калькулятору', self)
+        self.buttonCalculW3.move(200, 700)
+        self.buttonCalculW3.setFixedSize(200, 40)
+        self.buttonCalculW3.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonCalculW3.clicked.connect(self.open_calculator_operations)
+
     def open_main_window(self):
         from main_window import Main_window
         self.main_window = Main_window()
         self.main_window.show()
         self.close()
+
+    def open_calculator_operations(self):
+        from window_operations_calculator import Window_operations_calculator
+        self.main_window = Window_operations_calculator()
+        self.main_window.show()
+        self.close()
+
+    def download(self):
+        directoruaScr = os.path.dirname(os.path.abspath(__file__))
+        directoruaPar = os.path.dirname(directoruaScr)
+        file = os.path.join(directoruaPar, 'data/ФайлТеории_Операции.txt')
+        saveFile = "Теория_операций_с_матрицами.txt"
+
+        try:
+            if not os.path.exists(file):
+                QMessageBox.critical(self, "Ошибка", f"Файл не найден.")
+                return
+            shutil.copy(file, saveFile)
+            QMessageBox.information(self, "Получилось", f"Файл скачан в папку")
+        except Exception as e:
+            QMessageBox.critical(self, "Ошибка", f"Не удалось скачать файл")
 
     def open_test_operations(self):
         from window_authorization_operations import Window_authorization_operations

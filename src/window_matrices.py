@@ -1,5 +1,7 @@
 import sys 
-from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QVBoxLayout, QRadioButton, QButtonGroup, QScrollArea, QVBoxLayout
+import shutil
+import os
+from PyQt6.QtWidgets import QMessageBox, QWidget, QLabel, QPushButton, QVBoxLayout, QRadioButton, QButtonGroup, QScrollArea, QVBoxLayout
 from PyQt6.QtGui import QPixmap
 
 
@@ -13,11 +15,17 @@ class Window_matrices(QWidget):
         self.show()
 
     def initUI(self):
-        self.buttonNewWind4 = QPushButton('Назад', self)
-        self.buttonNewWind4.move(10, 10)
-        self.buttonNewWind4.setFixedSize(80, 40)
-        self.buttonNewWind4.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
-        self.buttonNewWind4.clicked.connect(self.open_main_window)
+        self.buttonBack = QPushButton('Назад', self)
+        self.buttonBack.move(10, 10)
+        self.buttonBack.setFixedSize(80, 40)
+        self.buttonBack.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonBack.clicked.connect(self.open_main_window)
+
+        self.buttonDownload = QPushButton('Скачать теорию', self)
+        self.buttonDownload.move(1040, 10)
+        self.buttonDownload.setFixedSize(150, 40)
+        self.buttonDownload.setStyleSheet('color: white; font-size: 14px; font-family: Verdana; background-color: MidnightBlue')
+        self.buttonDownload.clicked.connect(self.download)
 
         self.h1LabelWM = QLabel('Что такое матрици?', self)
         self.h1LabelWM.move(450, 10)
@@ -90,6 +98,22 @@ class Window_matrices(QWidget):
         self.MainWindow = Main_window()
         self.MainWindow.show()
         self.close()
+
+    def download(self):
+        directoruaScr = os.path.dirname(os.path.abspath(__file__))
+        directoruaPar = os.path.dirname(directoruaScr)
+        file = os.path.join(directoruaPar, 'data/ФайлТеории_Матрицы.txt')
+        saveFile = "Теория_матрицы.txt"
+
+        try:
+            if not os.path.exists(file):
+                QMessageBox.critical(self, "Ошибка", f"Файл не найден.")
+                return
+            shutil.copy(file, saveFile)
+            QMessageBox.information(self, "Получилось", f"Файл скачан в папку")
+        except Exception as e:
+            QMessageBox.critical(self, "Ошибка", f"Не удалось скачать файл")
+
 
     def open_test_matrices(self):
         from window_authorization_matrices import Window_authorization_matrices
